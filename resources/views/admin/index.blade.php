@@ -44,10 +44,11 @@
       </div>
 
       <div class="form-group">
-        <label for="autor">Autor</label>
+        <label for="autor">Tipo de Usuário</label>
         <select class="form-control" id="autor" name="autor">
-          <option {{(old('autor') && old('autor') == 'N' ? 'selected' : '' )}} value="N">Não</option>
-          <option {{(old('autor') && old('autor') == 'S' ? 'selected' : ''  )}} value="S">Sim</option>
+          @foreach($listaUsertype as $item)
+            <option value="{{$item->id}}">{{$item->descricao}}</option>
+          @endforeach
         </select>
       </div>
 
@@ -74,10 +75,11 @@
         <input type="email" class="form-control" id="email" name="email" v-model="$store.state.item.email" placeholder="E-mail">
       </div>
       <div class="form-group">
-        <label for="autor">Autor</label>
-        <select class="form-control" id="autor" name="autor" v-model="$store.state.item.autor">
-          <option value="N">Não</option>
-          <option value="S">Sim</option>
+        <label for="autor">Tipo de Usuário</label>
+        <select class="form-control" id="autor" name="autor" v-model="$store.state.item.usertype_id">
+          @foreach($listaUsertype as $item)
+            <option value="{{$item->id}}" {{(old('usertype_id') && old('usertype_id') == $item->id ? 'selected' : ''  )}}>{{$item->descricao}}</option>
+          @endforeach
         </select>
       </div>
       <div class="form-group">

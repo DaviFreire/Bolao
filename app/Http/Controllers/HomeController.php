@@ -30,7 +30,8 @@ class HomeController extends Controller
         ]);
 
         $totalUsuarios = User::count();
+        $totalMyCamp = 0;
         
-        return view('home', compact('listaMigalhas', 'totalUsuarios'));
+        return view('home', compact('listaMigalhas', 'totalUsuarios','totalMyCamp'));
     }
 }

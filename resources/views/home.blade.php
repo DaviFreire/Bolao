@@ -18,6 +18,10 @@
           <div class="col-md-4">
             <caixa qtd="{{$totalUsuarios}}" titulo="Usuários" url="{{route('usuarios.index')}}" cor="blue" icone="ion ion-person-stalker"></caixa>
           </div>
+
+          <div class="col-md-4">
+            <caixa qtd="{{$totalMyCamp}}" titulo="Campeonatos" url="{{route('usuarios.index')}}" cor="green" icone="ion ion-trophy"></caixa>
+          </div>
       </div>
     </painel>
 </pagina>

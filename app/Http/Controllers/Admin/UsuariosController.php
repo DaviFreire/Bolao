@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Usertype;
 use Illuminate\Validation\Rule;
 
 class UsuariosController extends Controller
@@ -17,14 +18,14 @@ class UsuariosController extends Controller
     public function index()
     {
       $listaMigalhas = json_encode([
-        ["titulo"=>"Admin","url"=>route('home')],
+        ["titulo"=>"Home","url"=>route('home')],
         ["titulo"=>"Lista de Usuários","url"=>""]
       ]);
 
       $listaModelo = User::select('id','name','email')->paginate(5);
+      $listaUsertype = Usertype::get();
 
-
-      return view('admin.index',compact('listaMigalhas','listaModelo'));
+      return view('admin.index',compact('listaMigalhas','listaModelo','listaUsertype'));
     }
 
     /**

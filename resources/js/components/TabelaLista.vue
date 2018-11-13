@@ -28,8 +28,8 @@
               <input type="hidden" name="_method" value="DELETE">
               <input type="hidden" name="_token" v-bind:value="token">
 
-              <a v-if="detalhe && !modal" v-bind:href="detalhe">Detalhe |</a>
-              <modallink v-if="detalhe && modal" v-bind:item="item" v-bind:url="detalhe" tipo="link" nome="detalhe" titulo=" Detalhe |" css=""></modallink>
+              <a v-if="detalhe && !modald" v-bind:href="detalhe + item.id">Detalhe |</a>
+              <modallink v-if="detalhe && modald" v-bind:item="item" v-bind:url="detalhe" tipo="link" nome="detalhe" titulo=" Detalhe |" css=""></modallink>
 
 
               <a v-if="editar && !modal" v-bind:href="editar"> Editar |</a>
@@ -52,7 +52,7 @@
 
 <script>
     export default {
-      props:['titulos','itens','ordem','ordemcol','criar','detalhe','editar','deletar','token','modal'],
+      props:['titulos','itens','ordem','ordemcol','criar','detalhe','editar','deletar','token','modal','modald'],
       data: function(){
         return {
           buscar:'',

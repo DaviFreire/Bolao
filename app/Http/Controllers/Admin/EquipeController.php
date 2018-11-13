@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
+use App\Equipe;
+use Illuminate\Validation\Rule;
 
-class CampeonatoController extends Controller
+class EquipeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +17,14 @@ class CampeonatoController extends Controller
      */
     public function index()
     {
-        //
+      $listaMigalhas = json_encode([
+        ["titulo"=>"Home","url"=>route('home')],
+        ["titulo"=>"Lista de Equipes","url"=>""]
+      ]);
+
+      $listaModelo = Equipe::select('id','descricao')->paginate(20);
+
+      return view('admin.equipe',compact('listaMigalhas','listaModelo'));
     }
 
     /**
@@ -35,7 +45,17 @@ class CampeonatoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $data = $request->all();
+      $validacao = \Validator::make($data,[
+        'descricao' => 'required|string|min:2',
+      ]);
+
+      if($validacao->fails()){
+        return redirect()->back()->withErrors($validacao)->withInput();
+      }
+
+      Equipe::create($data);
+      return redirect()->back();
     }
 
     /**
@@ -46,7 +66,7 @@ class CampeonatoController extends Controller
      */
     public function show($id)
     {
-        //
+        return Equipe::find($id);
     }
 
     /**
@@ -69,7 +89,20 @@ class CampeonatoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $data = $request->all();
+
+      $validacao = \Validator::make($data,[
+        'descricao' => 'required|string|min:2',
+      ]);
+
+
+
+      if($validacao->fails()){
+        return redirect()->back()->withErrors($validacao)->withInput();
+      }
+
+      Equipe::find($id)->update($data);
+      return redirect()->back();
     }
 
     /**
@@ -80,6 +113,7 @@ class CampeonatoController extends Controller
      */
     public function destroy($id)
     {
-        //
+      Equipe::find($id)->delete();
+      return redirect()->back();
     }
 }

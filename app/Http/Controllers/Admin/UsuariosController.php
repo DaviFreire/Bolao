@@ -15,7 +15,7 @@ class UsuariosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
       $listaMigalhas = json_encode([
         ["titulo"=>"Home","url"=>route('home')],

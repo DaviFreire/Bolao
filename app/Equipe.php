@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-
-class Campeonato extends Model
+class Equipe extends Model
 {
     use SoftDeletes;
 	use Notifiable;
@@ -18,7 +17,7 @@ class Campeonato extends Model
      * @var array
      */
     protected $fillable = [
-        'descricao', 'dt_inicial', 'dt_final', 'owner_id', 'ativo'
+        'descricao'
     ];
 
     protected $dates = ['deleted_at'];

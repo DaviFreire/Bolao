@@ -20,7 +20,11 @@
           </div>
 
           <div class="col-md-4">
-            <caixa qtd="{{$totalMyCamp}}" titulo="Campeonatos" url="{{route('usuarios.index')}}" cor="green" icone="ion ion-trophy"></caixa>
+            <caixa qtd="{{$totalMyCamp}}" titulo="Equipes" url="{{route('equipes.index')}}" cor="red" icone="ion ion-tshirt"></caixa>
+          </div>
+
+          <div class="col-md-4">
+            <caixa qtd="{{$totalMyCamp}}" titulo="Campeonatos" url="{{route('campeonatos.index')}}" cor="green" icone="ion ion-trophy"></caixa>
           </div>
       </div>
     </painel>

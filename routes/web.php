@@ -22,5 +22,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware(['auth'])->prefix('admin')->namespace('Admin')->group(function(){
 
   Route::resource('usuarios', 'UsuariosController');
+  Route::resource('campeonatos', 'CampeonatosController');
+  Route::resource('campeonatodetalhes', 'CampeonatoDetalheController');
+  Route::resource('equipes', 'EquipeController');
 
 });
